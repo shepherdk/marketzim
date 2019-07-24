@@ -7,6 +7,33 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index(){
+        //require_once base_path() . '/vendor/autoload.php';
+        // $paynow = new \Paynow\Payments\Paynow(
+        //     '5782',
+        //     '28b1a543-9ed2-431c-895e-469ce6c5e88b',
+        //     // The return url can be set at later stages. You might want to do this if you want to pass data to the return url (like the reference of the transaction)
+        //     '/',
+        //     '/'
+        // );
+        // $payment = $paynow->createPayment('Invoice 35', 'user@example.com');
+        // $payment->add('Bananas', 2.50);
+        // $payment->add('Apples', 3.40);
+        // $response = $paynow->send($payment);
+        // if($response->success()) {
+        //     // Redirect the user to Paynow
+        //     $url = $response->redirectUrl();
+        //     return redirect($url);
+
+        //     // Or if you prefer more control, get the link to redirect the user to, then use it as you see fit
+        //     // $link = $response->redirectLink();
+
+        //     // Get the poll url (used to check the status of a transaction). You might want to save this in your DB
+        //     $pollUrl = $response->pollUrl();
+        //     echo 'hehee';
+        // }
+        // else {
+        //     die('not working');
+        // }
         return view('pages.index');
     }
 
@@ -15,7 +42,7 @@ class PagesController extends Controller
     }
 
     public function blogDetails(){
-        return view('pages.blog-Details');
+        return view('pages.blog-details');
     }
 
     public function blog(){

@@ -4,15 +4,23 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-7 col-lg-2">
 						<div class="logo">
-							<a href="/">
-								<img src="images/logo/logo.jpg" alt="logo images">
+							<a href="{{ url('/') }}">
+								<img src="{{ asset('images/logo/logo.jpg') }}" alt="logo images">
 							</a>
 						</div>
 					</div>
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li class="drop with--one--item"><a href="/">Home</a></li>
+                                <li class="drop with--one--item"><a href="/">Home</a></li>
+                                <li class="drop"><a href="{{ route('articles.index')}}">Articles</a>
+									<div class="megamenu dropdown">
+										<ul class="item item01">
+											<li><a href="{{ route('articles.index')}}">All Articles</a></li>
+											<li><a href="{{ route('articles.create')}}">Create new article</a></li>
+										</ul>
+									</div>
+								</li>
 								<li class="drop"><a href="#">Shop</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
@@ -97,7 +105,7 @@
 													<li><a href="portfolio-details">Portfolio Details</a></li>
 												</ul>
 											</li>
-											<li><a href="my-account">My Account</a></li>
+											<li><a href={{ url('/my-account') }}>My Account</a></li>
 											<li><a href="cart">Cart Page</a></li>
 											<li><a href="checkout">Checkout Page</a></li>
 											<li><a href="wishlist">Wishlist Page</a></li>
@@ -144,7 +152,7 @@
 											<div class="miniproduct">
 												<div class="item01 d-flex">
 													<div class="thumb">
-														<a href="product-details"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
+														<a href="product-details"><img src="{{ asset('images/product/sm-img/1.jpg') }}" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details">Voyage Yoga Bag</a></h6>
@@ -160,7 +168,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="product-details"><img src="images/product/sm-img/3.jpg" alt="product images"></a>
+														<a href="product-details"><img src="{{ asset('images/product/sm-img/3.jpg') }}" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="product-details">Impulse Duffle</a></h6>
@@ -258,8 +266,26 @@
 														<span><a href="#">Compare Product</a></span>
 														<span><a href="#">My Account</a></span>
 														<span><a href="#">My Wishlist</a></span>
-														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+
+                                                        {{-- Auth logic --}}
+                                                        @guest
+                                                            <span><a href="{{ route('login') }}">{{ __('Login') }}</a></span>
+                                                            @if (Route::has('register'))
+                                                                    <span><a href="{{ route('register') }}">{{ __('Create an account') }}</a></span>
+                                                            @endif
+                                                        @else
+                                                    <span><a href="{{ route('dashboard')}}">{{ Auth::user()->name }}</span></a>
+                                                            <span><a href="{{ route('logout') }}"
+                                                                onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                                {{ __('Logout') }}
+                                                            </a></span>
+
+                                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                                @csrf
+                                                            </form>
+                                                        @endguest
+
 													</div>
 												</div>
 											</div>
@@ -314,8 +340,8 @@
 				<!-- End Mobile Menu -->
 	            <div class="mobile-menu d-block d-lg-none">
 	            </div>
-	            <!-- Mobile Menu -->	
-			</div>		
+	            <!-- Mobile Menu -->
+			</div>
 		</header>
 		<!-- //Header -->
 		<!-- Start Search Popup -->

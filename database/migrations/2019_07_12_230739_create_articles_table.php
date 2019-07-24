@@ -18,6 +18,8 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->decimal('price');
+            $table->enum('type', ['unique', 'stock']);
+            $table->string('category');
             $table->timestamps();
         });
     }

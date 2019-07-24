@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/', function () {
+//     view('index');
+// } );
+
 Route::resource('articles', 'ArticlesController');
 
 Route::get('/', 'PagesController@index');
@@ -41,3 +45,7 @@ Route::get('/single-product', 'PagesController@singleProduct');
 Route::get('/team', 'PagesController@team');
 
 Route::get('/wishlist', 'PagesController@wishlist');
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

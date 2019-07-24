@@ -1,0 +1,6 @@
+Bidding - unique
+Normal purchase - Stock
+paynow
+
+...> crud for categories, and types -> ADMIN
+---> add tags in article descriptions.
