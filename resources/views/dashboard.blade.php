@@ -48,6 +48,7 @@
                         <table class="table table-borderless table-hover">
                                 <thead class="table-info">
                                     <tr>
+                                    {{-- <th>Main image</th> --}}
                                     <th>Title</th>
                                     <th>Created when</th>
                                     <th>Action</th>
@@ -56,8 +57,9 @@
                                 <tbody>
                                     @foreach($articles as $article)
                                     <tr>
-                                    <td><a href="/articles/{{ $article->id}}">{{ $article->title}}</a></td>
-                                    <td>{{ date("D M d - h:i", strtotime($article->created_at))}}</td>
+                                    {{-- <td><img src="storage/main_images/{{ $article->main_image }}" style="width:30%;" class="img-thumbnail mr-0"></td> --}}
+                                    <td><a href="/articles/{{ $article->id}}">{{ $article->title }}</a></td>
+                                    <td>{{ date("D M d - h:i", strtotime($article->created_at)) }}</td>
                                     <td>
                                         <form action="{{ route('articles.destroy', $article->id) }}" method="POST">
                                             <a href="/articles/{{ $article->id }}/edit" class="btn btn-sm btn-outline-info mr-4"><i class="fa fa-edit"></i></a>

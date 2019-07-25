@@ -26,7 +26,7 @@
 
                 <!--Grid column-->
                 <div class="col-md-8">
-                <h2 class="mb-5 h2 text-center">Create a new entry</h2>
+                <h2 class="mb-5 h2 text-center">Edit the article</h2>
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -40,7 +40,7 @@
 
                 <!--Card content-->
                 <div class="card">
-                <form action="{{ route('articles.update', $article->id) }}" method="POST" class="card-body">
+                <form action="{{ route('articles.update', $article->id) }}" method="POST" class="card-body" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <!--title-->
@@ -56,8 +56,8 @@
                         <div class="col-md-6 mb-3">
                             <label for="input">
                                 <br>Click to edit image<br>
-                                <img src="{{ asset('images/icon.png') }}" id="img-holder" class="img-thumbnail"></label>
-                            <input id="input" type="file" class="hidden">
+                            <img src="/storage/main_images/{{ $article->main_image }}" id="img-holder" class="img-thumbnail"></label>
+                            <input id="input" name="main_image" type="file" class="hidden">
                         </div>
 
                         <!--Grid column-->
@@ -80,11 +80,11 @@
                         <div class="col-lg-6 col-md-12 mb-4">
 
                             <label for="category">Category</label>
-                            <select name="category" class="custom-select d-block w-100" id="category" "required>
+                            <select name="category" class="custom-select d-block w-100" id="category" required>
                                 <option value="">Choose...</option>
                                 <option value="politics">Politics</option>
-                                <option value="unique">Religion</option>
-                                <option value="unique">History</option>
+                                <option value="religion">Religion</option>
+                                <option value="history">History</option>
                             </select>
                             <div class="invalid-feedback">
                             Please select a valid option.
@@ -95,7 +95,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label for="price">Article price</label>
-                            <input type="text" class="form-control" name="price" id="price" value="{{ $article->price }}" placeholder="" required>
+                            <input name="price" type="decimal" class="form-control" id="price" value="{{ $article->price }}" required>
                             <div class="invalid-feedback">
                                 Price is required
                             </div>

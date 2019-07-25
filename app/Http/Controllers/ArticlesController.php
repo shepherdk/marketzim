@@ -51,12 +51,28 @@ class ArticlesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:articles|max:255',
+            // 'title' => 'required|unique:articles|max:255',
+            'title' => 'required|max:255',
             'type' => 'required',
             'category' => 'required',
             'price' => 'required|numeric',
             'description' => 'required',
+            'main_image' => 'image|nullable|max:1999'
         ]);
+        //Handle file upload
+        if($request->hasFile('main_image')){
+            $fileNameWithExt = $request->file('main_image')->getClientOriginalName();
+            //Just get the filename
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //Just get the extension
+            $extension = $request->file('main_image')->getClientOriginalExtension();
+            //File name to store
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            //Upload image--artisan storage:link
+            $path = $request->file('main_image')->storeAs('public/main_images', $fileNameToStore);
+        } else{
+            $fileNameToStore = 'noimage.jpg';
+        }
 
         $article = new Article;
         $article->title = $request->input('title');
@@ -65,6 +81,7 @@ class ArticlesController extends Controller
         $article->price = $request->input('price');
         $article->description = $request->input('description');
         $article->user_id = Auth::user()->id;
+        $article->main_image = $fileNameToStore;
         //create article
         $article->save();
         // $article = Article::create($validatedData, auth()->user()->id);
@@ -111,7 +128,8 @@ class ArticlesController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'title' => 'required|unique:articles|max:255',
+            // 'title' => 'required|unique:articles|max:255',
+            'title' => 'required|max:255',
             'type' => 'required',
             'category' => 'required',
             'price' => 'required|numeric',

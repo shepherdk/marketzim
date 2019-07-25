@@ -40,7 +40,7 @@
 
         <!--Card content-->
         <div class="card">
-        <form action="{{ route('articles.store') }}" method="POST" class="card-body">
+        <form action="{{ route('articles.store') }}" method="POST" class="card-body" enctype="multipart/form-data">
             @csrf
             <!--title-->
             <div class="col-md-6 mb-3">
@@ -54,7 +54,7 @@
             <!--file-->
             <div class="col-md-6 mb-3">
                 <label for="file">Upload article picture</label>
-                <input id="input-id" type="file" class="file" data-preview-file-type="text" >
+                <input name="main_image" id="input-id" type="file" class="file" data-preview-file-type="text" >
 
             </div>
 

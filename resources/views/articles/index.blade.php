@@ -125,7 +125,7 @@
 	        						<!-- Start Single Product -->
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
-											<a class="first__img" href="/articles/{{ $article->id}}"><img src="{{ asset('images/artSlider.JPG')}}" alt="product image"></a>
+											<a class="first__img" href="/articles/{{ $article->id}}"><img src="/storage/main_images/{{ $article->main_image }}" alt="product image"></a>
 											<a class="second__img animation1" href="/articles/{{ $article->id}}"><img src="{{ asset( 'images/artSlider2.JPG' )}}" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">{{ $article->type }}</span>
