@@ -16,38 +16,14 @@
                                 <li class="drop"><a href="{{ route('articles.index')}}">Articles</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
-											<li><a href="{{ route('articles.index')}}">All Articles</a></li>
+                                            <li><a href="{{ route('articles.index')}}">All Articles</a></li>
+                                            @if(!Auth::guest())
 											<li><a href="{{ route('articles.create')}}">Create new article</a></li>
-										</ul>
+                                            @endif
+                                        </ul>
 									</div>
 								</li>
-								<li class="drop"><a href="#">Shop</a>
-									<div class="megamenu mega03">
-										<ul class="item item03">
-											<li class="title">Shop Layout</li>
-											<li><a href="shop-grid">Shop Grid</a></li>
-											<li><a href="single-product">Single Product</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Shop Page</li>
-											<li><a href="my-account">My Account</a></li>
-											<li><a href="cart">Cart Page</a></li>
-											<li><a href="checkout">Checkout Page</a></li>
-											<li><a href="wishlist">Wishlist Page</a></li>
-											<li><a href="error404">404 Page</a></li>
-											<li><a href="faq">Faq Page</a></li>
-										</ul>
-										<ul class="item item03">
-											<li class="title">Bargain Books</li>
-											<li><a href="shop-grid">Bargain Bestsellers</a></li>
-											<li><a href="shop-grid">Activity Kits</a></li>
-											<li><a href="shop-grid">B&N Classics</a></li>
-											<li><a href="shop-grid">Books Under $5</a></li>
-											<li><a href="shop-grid">Bargain Books</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="shop-grid">Books</a>
+								<li class="drop"><a href="shop-grid">Catalogue</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
 											<li class="title">Categories</li>
@@ -75,27 +51,7 @@
 										</ul>
 									</div>
 								</li>
-								<li class="drop"><a href="shop-grid">Kids</a>
-									<div class="megamenu mega02">
-										<ul class="item item02">
-											<li class="title">Top Collections</li>
-											<li><a href="shop-grid">American Girl</a></li>
-											<li><a href="shop-grid">Diary Wimpy Kid</a></li>
-											<li><a href="shop-grid">Finding Dory</a></li>
-											<li><a href="shop-grid">Harry Potter</a></li>
-											<li><a href="shop-grid">Land of Stories</a></li>
-										</ul>
-										<ul class="item item02">
-											<li class="title">More For Kids</li>
-											<li><a href="shop-grid">B&N Educators</a></li>
-											<li><a href="shop-grid">B&N Kids' Club</a></li>
-											<li><a href="shop-grid">Kids' Music</a></li>
-											<li><a href="shop-grid">Toys & Games</a></li>
-											<li><a href="shop-grid">Hoodies</a></li>
-										</ul>
-									</div>
-								</li>
-								<li class="drop"><a href="#">Pages</a>
+								{{-- <li class="drop"><a href="#">Layouts</a>
 									<div class="megamenu dropdown">
 										<ul class="item item01">
 											<li><a href="about">About Page</a></li>
@@ -114,16 +70,11 @@
 											<li><a href="team">Team Page</a></li>
 										</ul>
 									</div>
-								</li>
-								<li class="drop"><a href="blog">Blog</a>
-									<div class="megamenu dropdown">
-										<ul class="item item01">
-											<li><a href="blog">Blog Page</a></li>
-											<li><a href="blog-details">Blog Details</a></li>
-										</ul>
-									</div>
-								</li>
-								<li><a href="contact">Contact</a></li>
+								</li> --}}
+                                <li><a href="contact">Contact</a></li>
+                                @if (!Auth::guest())
+                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                @endif
 							</ul>
 						</nav>
 					</div>

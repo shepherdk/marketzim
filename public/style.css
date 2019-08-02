@@ -649,7 +649,9 @@ a {
   background-size: cover;
   background-position: center center; }
 .bg-image--4 {
-  background-image: url(images/bg/4.jpg);
+    background: lightgrey;
+    background-image: url(images/bg2v.png);
+  /* background-image: url(images/bg/4.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center; }
@@ -659,7 +661,8 @@ a {
   background-size: cover;
   background-position: center center; }
 .bg-image--6 {
-  background-image: url(images/artSlider.JPG);
+  background: lightgrey;
+  background-image: url(images/bg2v.png);
   /* background-image: url(images/bg/6.jpg); */
   background-repeat: no-repeat;
   background-size: cover;

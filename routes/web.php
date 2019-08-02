@@ -16,7 +16,9 @@
 
 Route::resource('articles', 'ArticlesController');
 
-Route::get('/', 'PagesController@index');
+Route::get('/', 'ArticlesController@index');
+
+// Route::get('/', 'PagesController@index');
 
 Route::get('/about', 'PagesController@about');
 
